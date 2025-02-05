@@ -10,11 +10,14 @@ public abstract class Question
       get ;
       private set ;
    }
+
    private int mark;
+   public int Mark{get => mark;}
    public Answer RightAnswer { get; private set; }
    protected Answer[] AnswersList ;
    protected void GetBody()
    {
+      Console.WriteLine(this.Header);
       Console.Write("Enter body of the question: ");
       Body = Console.ReadLine();
    }
@@ -75,11 +78,11 @@ public abstract class Question
          }
          Console.Write("Enter mark of the question: ");
          success = int.TryParse(Console.ReadLine(), out mark);
-      }while(!success || mark < 1 );
+      }while(!success || Mark < 1 );
    }
    public override string ToString()
    {
-      StringBuilder content= new StringBuilder( $"{Header}   Marks: {mark}\n{Body}\n");
+      StringBuilder content= new StringBuilder( $"{Header}   Marks: {Mark}\n{Body}\n");
       for (int i=0;i<AnswersList.Length;i++) content.Append( $"{i+1}.{AnswersList[i]}\t");
       content.Append( "\n");
       content.Append( "--------------------------------------------\n");
@@ -88,7 +91,7 @@ public abstract class Question
 
    public int GradeAnswer( Answer userAnswer)
    {
-      return (userAnswer == RightAnswer) ?   mark : 0 ;
+      return (userAnswer == RightAnswer) ?   Mark : 0 ;
    }
 }
 

@@ -4,6 +4,7 @@ using System.Timers;
 public abstract class Exam
 {
     protected int UserMark ;
+    protected int totalMark ;
     private Timer timeOfExam  ;
     protected int NumberOfQuestions;
     protected Question[] questions;
@@ -55,6 +56,7 @@ public abstract class Exam
         {
             userAnswers[i] = questions[i].Ask();
             UserMark += questions[i].GradeAnswer(userAnswers[i]);
+            totalMark += questions[i].Mark;
             Console.WriteLine("=====================================");
         } 
         Console.Clear();
@@ -116,10 +118,10 @@ public sealed class FinalExam : Exam
         Console.WriteLine("Your answers: ");
         for(int i=0;i<NumberOfQuestions;i++)
         {
-            Console.WriteLine($"{i+1}.{ questions[i].Body }: {userAnswers[i]}");
+            Console.WriteLine($"Q{i+1})\t{ questions[i].Body }: {userAnswers[i]}");
         }
 
-        Console.WriteLine($"Your mark: { UserMark }");
+        Console.WriteLine($"Your mark: { UserMark } out of {totalMark}");
     }
 
     public override void GetQuestions()
@@ -131,7 +133,7 @@ public sealed class FinalExam : Exam
             do
             {
                 if(!success) Console.WriteLine("Invalid Input");
-                Console.WriteLine("Enter type of question: \n1.True or false\t\t2.Multiple Choice Question"); 
+                Console.WriteLine($"Enter type of question {i+1}: \n1.True or false\t\t2.Multiple Choice Question"); 
                 success = int.TryParse(Console.ReadLine(), out type);
             } while (!success || type < 1 || type > 2);
 

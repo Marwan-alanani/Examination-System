@@ -9,10 +9,10 @@ class Program
     static void Main()
     {
         Subject s = new Subject(1, "Math");
-        char choice;
-        bool success = true;
         while (true)
         {
+            char choice;
+            bool success = true;
             do
             {
                 if (!success) Console.WriteLine("Invalid input. Try again.");
@@ -34,9 +34,9 @@ class Program
             else
             {
                 Console.WriteLine("Waiting for 3 seconds...");
-               Thread.Sleep(3000); 
-               Console.Clear();
-               Console.WriteLine("What about now ?");
+                Thread.Sleep(3000);
+                Console.Clear();
+                Console.WriteLine("What about now ?");
             }
         }
     }
