@@ -86,8 +86,7 @@ public sealed class PracticalExam : Exam
         
         for(int i=0;i<NumberOfQuestions;i++)
         {
-            Console.WriteLine($"{i}.{questions[i].Body}");
-            Console.WriteLine($"Right Answer:{questions[i].RightAnswer}");
+            Console.WriteLine($"Q{i+1})\t{questions[i].Body}\tRight Answer:{questions[i].RightAnswer}");
         }
     }
 

@@ -1,6 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Timers;
-using Timer = System.Timers.Timer;
 
 namespace G04___OOP_Exam;
 
